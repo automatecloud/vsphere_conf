@@ -15,65 +15,79 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module automates the setup and configuration steps necessary for the new Puppet Labs Inc. vSphere module:
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+The following steps are automated:
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+- Install the necessery packages:
+  - On Debian 7 and 8, Ubuntu 14.04 LTS and similar packages zlib1g-dev libxslt1-dev build-essential via apt
+  - On On RHEL 6 and 7, CentOS, and similar packages zlib-devel libxslt-devel patch gcc via yum
+- Install the necessary ruby gems rbvmomi and hocon
+- Configures the /etc/puppetlabs/puppet/vcenter.conf and the following setting:
+  - Username (user)
+  - Password (password)
+  - vSphere host (host)
+  - Port (port)
+  - Use insecure http? (insecure)
+  - SSL encryption? (ssl)
 
 ## Setup
 
 ### What vsphere_conf affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+* The module installs the packages depending on operating system family Debian or Redhat:
+  - For Debian it will install the packages zlib1g-dev libxslt1-dev build-essential via apt
+  - For Redhat it will install the packages zlib-devel libxslt-devel patch gcc via yum
+* The module will install the neceessary ruby gems rbvmomi and hocon via the following executable:
+  /opt/puppetlabs/puppet/bin/gem install rbvmomi hocon --no-ri --no-rdoc
+* This module will configure the /etc/puppetlabs/puppet/vcenter.conf for the connection to the vSphere host.
+* This module only works and was tested with Puppet Enterprise 2015.2!
 
 ### Beginning with vsphere_conf
 
-The very basic steps needed for a user to get the module up and running.
+You need to include your vSphere vCenter connection informations:
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+class vsphere_conf {
+ host => 'myvcenterhost.example.com',
+ user => 'myvcenteruser',
+ password => 'myvcenteruserpassword', 
+}
+
+you can also specifiy additional configurations like port used to connect to vcenter, if the connection should be done by http (insecure) and if ssl encryption will be used (ssl).
+
+class vsphere_conf {
+ host => 'myvcenterhost.example.com',
+ user => 'myvcenteruser',
+ password => 'myvcenteruserpassword',
+ port => 443,
+ insecure => false,
+ ssl => true,
+}
+
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+The following parameters can be configured:
+ $packages: Specifies the packages that will be installed as pre requirement for the vSphere module
+ $host: The vSphere vCenter Host that will be used to connect 
+ $user: The user that will be used to create, modify and delete virtual machines
+ $password: The password for the user that will be used to connect to the vCenter host
+ $port: The port that will be used to connect to the vCenter instance. Default = 443, if you enable insecure connections you must use port 80
+ $insecure: true if you connect via 443 and false if you connect via port 80
+ $ssl: Using ssl to establish the connection to the vSphere vCenter host.
 
 ## Reference
-
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+Classes
+vsphere_conf: Default class, calls an install with default values. Requires the $user, $password and $host.
+oraclexe::install: Installs and configures the vSphere Module requirements.
+oraclexe::params: Declares the default values.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+This Module can only be used with Puppet Enterprise 2015.2
 
 ## Release Notes/Contributors/Etc **Optional**
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+This is the first module release! No guarantee at all :-)
