@@ -1,0 +1,14 @@
+{
+  "name": "andulla-vsphere_conf",
+  "version": "0.1.0",
+  "author": "andulla",
+  "summary": "Installs and configures all necessery packages and configuration for the new puppetlabs vsphere module",
+  "license": "Apache-2.0",
+  "source": "https://github.com/Andulla/vsphere_conf",
+  "project_page": "https://github.com/Andulla/vsphere_conf",
+  "issues_url": "https://github.com/Andulla/vsphere_conf/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
