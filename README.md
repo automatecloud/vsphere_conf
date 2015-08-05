@@ -70,19 +70,19 @@ class vsphere_conf {
 ## Usage
 
 The following parameters can be configured:
- $packages: Specifies the packages that will be installed as pre requirement for the vSphere module
- $host: The vSphere vCenter Host that will be used to connect 
- $user: The user that will be used to create, modify and delete virtual machines
- $password: The password for the user that will be used to connect to the vCenter host
- $port: The port that will be used to connect to the vCenter instance. Default = 443, if you enable insecure connections you must use port 80
- $insecure: true if you connect via 443 and false if you connect via port 80
- $ssl: Using ssl to establish the connection to the vSphere vCenter host.
+- $packages: Specifies the packages that will be installed as pre requirement for the vSphere module
+- $host: The vSphere vCenter Host that will be used to connect 
+- $user: The user that will be used to create, modify and delete virtual machines
+- $password: The password for the user that will be used to connect to the vCenter host
+- $port: The port that will be used to connect to the vCenter instance. Default = 443, if you enable insecure connections you must use port 80
+- $insecure: true if you connect via 443 and false if you connect via port 80
+- $ssl: Using ssl to establish the connection to the vSphere vCenter host.
 
 ## Reference
 Classes
-vsphere_conf: Default class, calls an install with default values. Requires the $user, $password and $host.
-oraclexe::install: Installs and configures the vSphere Module requirements.
-oraclexe::params: Declares the default values.
+-vsphere_conf: Default class, calls an install with default values. Requires the $user, $password and $host.
+-vsphere::install: Installs and configures the vSphere Module requirements.
+-vsphere::params: Declares the default values.
 
 ## Limitations
 
