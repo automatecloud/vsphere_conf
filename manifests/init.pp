@@ -19,6 +19,12 @@ class vsphere_conf (
  class { vsphere_conf::install:
    packages => $packages,
    gems => $gems,
+   host => $host,
+   user => $user,
+   password => $password,
+   port => $port,
+   insecure => $insecure,
+   ssl => $ssl,
  }
 
 }
