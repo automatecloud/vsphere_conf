@@ -10,7 +10,6 @@ class vsphere_conf::params {
   $port = 443
   $insecure = false
   $ssl = true
-  $gems = ['rbvmomi', 'hocon']
   case $::osfamily {
      'Debian' : {
         $packages = ['zlib1g-dev','libxslt1-dev','build-essential']
