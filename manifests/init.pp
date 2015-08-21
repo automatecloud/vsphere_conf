@@ -8,6 +8,8 @@
 #
 class vsphere_conf (
   $packages = $vsphere_conf::params::packages,
+  $gems = $vsphere_conf::params::gems,
+  $provider = $vsphere_conf::params::provider,
   $host = $vsphere_conf::params::host,
   $user = $vsphere_conf::params::user,
   $password = $vsphere_conf::params::password,
@@ -15,16 +17,23 @@ class vsphere_conf (
   $insecure = $vsphere_conf::params::insecure,
   $ssl = $vsphere_conf::params::ssl,
 ) inherits vsphere_conf::params {
+ # Install required packages
  package { $packages:
 	ensure => installed,
 	provider => $provider,
-	notify => Exec['rbvmomiandhocon'],
  }
- exec { 'rbvmomiandhocon':
- 	command     => '/opt/puppetlabs/puppet/bin/gem install rbvmomi hocon --no-ri --no-rdoc',
-        refreshonly => true,
- }
+
+ # Install required gems
+  $gems = [rbvmomi,hocon]
+  package { $gems:
+    provider => puppet_gem,
+    ensure => present,
+  }
+
  file { "/etc/puppetlabs/puppet/vcenter.conf":
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     content => template('vsphere_conf/vcenter.conf.erb'),
- } 
+ }
 }
