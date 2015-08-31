@@ -35,7 +35,7 @@ The following steps are automated:
 
 ## Setup
 
-### What vsphere_conf affects
+## What vsphere_conf affects
 
 * The module installs the packages depending on operating system family Debian or Redhat:
   - For Debian it will install the packages zlib1g-dev libxslt1-dev build-essential via apt
@@ -45,7 +45,7 @@ The following steps are automated:
 * This module will configure the /etc/puppetlabs/puppet/vcenter.conf for the connection to the vSphere host.
 * This module only works and was tested with Puppet Enterprise 2015.2!
 
-### Beginning with vsphere_conf
+## Beginning with vsphere_conf
 
 You need to include your vSphere vCenter connection informations:
 
@@ -66,7 +66,6 @@ class vsphere_conf {
  ssl => true,
 }
 
-
 ## Usage
 
 The following parameters can be configured:
@@ -79,9 +78,9 @@ The following parameters can be configured:
 - $ssl: Using ssl to establish the connection to the vSphere vCenter host.
 
 ## Reference
-Classes
+
+Classes:
 -vsphere_conf: Default class, calls an install with default values. Requires the $user, $password and $host.
--vsphere::install: Installs and configures the vSphere Module requirements.
 -vsphere::params: Declares the default values.
 
 ## Limitations
