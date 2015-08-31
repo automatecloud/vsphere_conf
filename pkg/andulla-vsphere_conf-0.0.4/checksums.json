@@ -1,0 +1,13 @@
+{
+  "Gemfile": "6a08ec57f18e97c4ead40a6529d05aa8",
+  "LICENSE": "8534cc5f25cb0717c5af1b301fba20c8",
+  "README.md": "729956fccb457c14e39f3fb3bc4c346e",
+  "Rakefile": "3044cde52b8cd8508c8400076a66ef11",
+  "examples/init.pp": "53cf83a1226c17b5fc2174662277886e",
+  "manifests/init.pp": "e738c4b8c8057faa25a04ead11743c11",
+  "manifests/params.pp": "0f7473ec57607298acd2f678d9d1ba5b",
+  "metadata.json": "f7d7750618c251b0762d2c7a5347e065",
+  "spec/classes/init_spec.rb": "c6fc72075484a6daba54cb86b669ed6c",
+  "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+  "templates/vcenter.conf.erb": "78349e1fd81d1944bde0154ca59abe4b"
+}

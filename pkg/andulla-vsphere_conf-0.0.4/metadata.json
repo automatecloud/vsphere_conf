@@ -7,17 +7,25 @@
   "source": "https://github.com/Andulla/vsphere_conf",
   "project_page": "https://github.com/Andulla/vsphere_conf",
   "issues_url": "https://github.com/Andulla/vsphere_conf/issues",
-  "tags": ["VMware", "vSphere"],
+  "tags": [
+    "VMware",
+    "vSphere"
+  ],
   "operatingsystem_support": [
     {
-    "operatingsystem":"RedHat",
-    "operatingsystemrelease":[ "6.0", "7.0" ]
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
     },
     {
-    "operatingsystem": "Ubuntu",
-    "operatingsystemrelease": [ "12.04" ]
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04"
+      ]
     }
-   ],
+  ],
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ]
