@@ -17,23 +17,23 @@ class vsphere_conf (
   $insecure = $vsphere_conf::params::insecure,
   $ssl = $vsphere_conf::params::ssl,
 ) inherits vsphere_conf::params {
- # Install required packages
- package { $packages:
-	ensure => installed,
-	provider => $provider,
- }
-
- # Install required gems
-  $gems = [rbvmomi,hocon]
-  package { $gems:
-    provider => puppet_gem,
-    ensure => present,
+  # Install required packages
+  package { $packages:
+    ensure   => installed,
+    provider => $provider,
   }
 
- file { "/etc/puppetlabs/puppet/vcenter.conf":
+  # Install required gems
+  $gems = [rbvmomi,hocon]
+  package { $gems:
+    ensure   => present,
+    provider => puppet_gem,
+  }
+
+  file { '/etc/puppetlabs/puppet/vcenter.conf':
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
     content => template('vsphere_conf/vcenter.conf.erb'),
- }
+  }
 }
