@@ -12,13 +12,16 @@ class vsphere_conf::params {
   $ssl = true
   $gems = [rbvmomi,hocon]
   case $::osfamily {
-     'Debian' : {
+    'Debian' : {
         $packages = ['zlib1g-dev','libxslt1-dev','build-essential']
-	      $provider = 'apt'
-     }
-     'Redhat' : {
+        $provider = 'apt'
+      }
+      'Redhat' : {
         $packages = ['zlib-devel', 'libxslt-devel', 'patch', 'gcc']
-	      $provider = 'yum'
-     }
+        $provider = 'yum'
+      }
+      default: {
+        fail("Module ${module_name} is not supported on ${::operatingsystem}")
+      }
   }
 }
