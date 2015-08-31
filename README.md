@@ -52,7 +52,7 @@ You need to include your vSphere vCenter connection informations:
 class vsphere_conf {
  host => 'myvcenterhost.example.com',
  user => 'myvcenteruser',
- password => 'myvcenteruserpassword', 
+ password => 'myvcenteruserpassword',
 }
 
 you can also specifiy additional configurations like port used to connect to vcenter, if the connection should be done by http (insecure) and if ssl encryption will be used (ssl).
@@ -70,7 +70,7 @@ class vsphere_conf {
 
 The following parameters can be configured:
 - $packages: Specifies the packages that will be installed as pre requirement for the vSphere module
-- $host: The vSphere vCenter Host that will be used to connect 
+- $host: The vSphere vCenter Host that will be used to connect
 - $user: The user that will be used to create, modify and delete virtual machines
 - $password: The password for the user that will be used to connect to the vCenter host
 - $port: The port that will be used to connect to the vCenter instance. Default = 443, if you enable insecure connections you must use port 80
@@ -79,9 +79,9 @@ The following parameters can be configured:
 
 ## Reference
 
-Classes:
--vsphere_conf: Default class, calls an install with default values. Requires the $user, $password and $host.
--vsphere::params: Declares the default values.
+The following classes are included inside the module:
+- vsphere_conf: Default class, calls an install with default values. Requires the $user, $password and $host.
+- vsphere::params: Declares the default values.
 
 ## Limitations
 
