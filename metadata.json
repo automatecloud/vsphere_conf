@@ -1,6 +1,6 @@
 {
   "name": "andulla-vsphere_conf",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "andulla",
   "summary": "Installs and configures all necessery packages and configuration for the new puppetlabs vsphere module",
   "license": "Apache-2.0",
