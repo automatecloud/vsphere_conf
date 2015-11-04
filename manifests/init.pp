@@ -24,7 +24,6 @@ class vsphere_conf (
   }
 
   # Install required gems
-  $gems = [rbvmomi,hocon]
   package { $gems:
     ensure   => present,
     provider => puppet_gem,
