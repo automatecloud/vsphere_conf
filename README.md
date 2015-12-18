@@ -15,7 +15,7 @@
 
 ## Overview
 
-This module automates the setup and configuration steps necessary for the new Puppet Labs Inc. vSphere module:
+This module automates the setup and configuration steps necessary for the new Puppet Labs Inc. vSphere module.
 
 ## Module Description
 
@@ -32,6 +32,7 @@ The following steps are automated:
   - Port (port)
   - Use insecure http? (insecure)
   - SSL encryption? (ssl)
+- You can test the deployment of new virtual machines within the connected vCenter instance by using the provision class.
 
 ## Setup
 
@@ -43,7 +44,7 @@ The following steps are automated:
 * The module will install the neceessary ruby gems rbvmomi and hocon via the following executable:
   /opt/puppetlabs/puppet/bin/gem install rbvmomi hocon --no-ri --no-rdoc
 * This module will configure the /etc/puppetlabs/puppet/vcenter.conf for the connection to the vSphere host.
-* This module only works and was tested with Puppet Enterprise 2015.2!
+* This module only works and was tested with Puppet Enterprise 2015.2 and 2015.3!
 
 ## Beginning with vsphere_conf
 
@@ -77,16 +78,27 @@ The following parameters can be configured:
 - $insecure: true if you connect via 443 and false if you connect via port 80
 - $ssl: Using ssl to establish the connection to the vSphere vCenter host.
 
+if you use the vsphere_conf::provision class you can specify the following parameters:
+
+- $vmprename: The Pre Name of the virtual machines that will be provisioned ex 'myvirtualmachine' pre name will create vms with the name myvirtualmachine1, myvirtualmachine2 etc.
+- $numberofvms: the number of virtual machines that should be created. can be also used to do performance tests inside your vSphere environment.
+- $vmlocation: The location of the virtual machine within the VM & Template view. Please also specify the invisible vm folder between datacenter and the first folder name. So a structure datacenter/myvms will look like /datacenter/vm/myvms/ for this parameter.
+- $vmstatus: Specify the status of the VMs if it should be running, stopped etc.
+- $vmsource: The template source from where the virtual machine should be provisioned from. Please also specify the invisible vm folder between datacenter and the first folder name. So a structure datacenter/mytemplates/mytemplate will look like /datacenter/vm/mytemplates/mytemplate for this parameter.
+- $vmmemory: The amount of virtual memory you would like to configure for the virtual machines. default is 1024 MB of vRAM
+- $vmvcpus: The number of virtual vCPUs configured for each virtual Machine. The default is 1
+
 ## Reference
 
 The following classes are included inside the module:
 - vsphere_conf: Default class, calls an install with default values. Requires the $user, $password and $host.
 - vsphere::params: Declares the default values.
+- vsphere::provision: Provision class to provision new example virtual machines for tests.
 
 ## Limitations
 
-This Module can only be used with Puppet Enterprise 2015.2
+This Module can only be used with Puppet Enterprise 2015.x
 
 ## Release Notes/Contributors/Etc **Optional**
 
-This is the first module release! No guarantee at all :-)
+Please test, test, test! No guarantee at all :-)
