@@ -77,6 +77,7 @@ The following parameters can be configured:
 - $port: The port that will be used to connect to the vCenter instance. Default = 443, if you enable insecure connections you must use port 80
 - $insecure: true if you connect via 443 and false if you connect via port 80
 - $ssl: Using ssl to establish the connection to the vSphere vCenter host.
+- $datacenter: The vCenter datacenter to be used by the module (defaults to undef).
 
 if you use the vsphere_conf::provision class you can specify the following parameters:
 

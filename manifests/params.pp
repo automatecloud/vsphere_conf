@@ -10,6 +10,7 @@ class vsphere_conf::params {
   $port = 443
   $insecure = false
   $ssl = true
+  $datacenter = undef
   $gems = [rbvmomi,hocon]
   case $::osfamily {
     'Debian' : {

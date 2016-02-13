@@ -16,6 +16,7 @@ class vsphere_conf (
   $port = $vsphere_conf::params::port,
   $insecure = $vsphere_conf::params::insecure,
   $ssl = $vsphere_conf::params::ssl,
+  $datacenter = $vsphere_conf::params::datacenter,
 ) inherits vsphere_conf::params {
   # Install required packages
   package { $packages:
