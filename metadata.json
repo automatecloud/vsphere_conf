@@ -2,12 +2,12 @@
   "name": "andulla-vsphere_conf",
   "version": "0.0.8",
   "author": "andulla",
-  "summary": "Installs and configures all necessery packages and configuration for the new puppetlabs vsphere module",
+  "summary": "Install and manage software and config prerequisites for the puppetlabs/vsphere module.",
   "license": "Apache-2.0",
   "source": "https://github.com/Andulla/vsphere_conf",
   "project_page": "https://github.com/Andulla/vsphere_conf",
   "issues_url": "https://github.com/Andulla/vsphere_conf/issues",
-  "tags": ["VMware", "vSphere"],
+  "tags": ["VMware", "vSphere","vCenter"],
   "operatingsystem_support": [
     {
     "operatingsystem":"RedHat",
