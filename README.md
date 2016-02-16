@@ -78,7 +78,7 @@ The following parameters can be configured:
 - `$user`: The user that will be used to create, modify and delete virtual machines
 - `$password`: The password for the user that will be used to connect to the vCenter host
 - `$port`: The port that will be used to connect to the vCenter instance. Default = 443, if you enable insecure connections you must use port 80
-- `$insecure`: true if you connect via 443 and false if you connect via port 80
+- `$insecure`: true if you connect via insecure HTTP (port 80). False if you connect via secure HTTPS (port 443).
 - `$ssl`: Using ssl to establish the connection to the vSphere vCenter host.
 - `$datacenter`: The vCenter datacenter to be used by the module (defaults to undef).
 
